@@ -1,4 +1,5 @@
 var prompt = require('prompt-sync')();
+var colors = require('colors');
 
 var isInt = function(n) {
     return n % 1 === 0;
@@ -36,10 +37,10 @@ while (play != "no") {
     switch (compareGuess(guess)) {
         case 0:
             bankroll += Number(bet);
-            console.log("Correct!! You win your bet!");
+            console.log("Correct!! You win your bet!".random);
         break;
         case 1:
-            console.log("You were close! You don't lose money");
+            console.log("You were close! You don't lose money".yellow);
         break;
         default:
             if (bankroll - Number(bet) <= 0) {
@@ -47,12 +48,12 @@ while (play != "no") {
             } else {
                 bankroll -= Number(bet);
             }
-            console.log("Wrong :( You lose your bet.");
+            console.log("Wrong :( You lose your bet.".black.bgRed);
 
     }
     console.log("Your current bankroll is $" + bankroll + ".")
     if (bankroll == 0) {
-        console.log("Game over. You lose :(");
+        console.log("Game over. You lose :(".trap.red.bgWhite);
         play = "no"
     } else {
         play = prompt('Press enter to continue playing or type "no" to quit: ')
